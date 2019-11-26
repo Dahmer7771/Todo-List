@@ -1,16 +1,15 @@
 import React from "react";
 import "./TodoCounter.css";
 
-function TodoCounter() {
+function TodoCounter(props) {
+    const {
+        toDo,
+        done,
+    } = props;
     return (
         <div>
             <span className="text-muted todo-counter">
-                {1}
-                {" "}
-                more to do,
-                {4}
-                {" "}
-                done
+                {`${toDo} more to do, ${done} done`}
             </span>
         </div>
     );

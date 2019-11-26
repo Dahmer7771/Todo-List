@@ -11,3 +11,24 @@
 .btn-complete {
     margin-left: 10px;
 }
+
+.span-style {
+    flex-grow: 1;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.completed-task {
+    text-decoration: line-through;
+}
+
+.list-item {
+    display: flex;
+    color: black;
+    font-weight: 400;
+}
+
+.important-list-item {
+    color: #17a2b8;
+    font-weight: 400;
+}

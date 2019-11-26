@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faTrashAlt,
@@ -6,29 +6,56 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./TodoListItem.css";
 
-function TodoListItem({ label, important }) {
-    const liStyle = {
-        color: important ? "#17a2b8" : "black",
-        fontWeight: important ? "700" : "400",
-        display: "flex",
-    };
-    const spanStyle = {
-        flexGrow: 1,
-        fontSize: "24px",
-    };
-    return (
-        <li className="list-group-item todo-list-item" style={liStyle}>
-            <span style={spanStyle}>
-                {label}
-            </span>
-            <button type="button" className="btn btn-outline-danger btn-delete">
-                <FontAwesomeIcon icon={faTrashAlt} />
-            </button>
-            <button type="button" className="btn btn-outline-success btn-complete">
-                <FontAwesomeIcon icon={faExclamation} />
-            </button>
-        </li>
-    );
+class TodoListItem extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    render() {
+        const {
+            label,
+            done,
+            important,
+            onDeleted,
+            onToggleImportant,
+            onToggleDone,
+        } = this.props;
+
+        let spanClasses = ["span-style list-item"];
+        if (done === true) {
+            spanClasses.push("completed-task");
+        }
+        if (important === true) {
+            spanClasses.push("important-list-item");
+        }
+        spanClasses = spanClasses.join(" ");
+
+        return (
+            <li className="list-group-item todo-list-item list-item">
+                <span
+                    className={`${spanClasses}`}
+                    onClick={onToggleDone}
+                >
+                    {label}
+                </span>
+                <button
+                    type="button"
+                    className="btn btn-outline-danger btn-delete"
+                    onClick={onDeleted}
+                >
+                    <FontAwesomeIcon icon={faTrashAlt} />
+                </button>
+                <button
+                    type="button"
+                    className="btn btn-outline-success btn-complete"
+                    onClick={onToggleImportant}
+                >
+                    <FontAwesomeIcon icon={faExclamation} />
+                </button>
+            </li>
+        );
+    }
 }
 
 export default TodoListItem;
