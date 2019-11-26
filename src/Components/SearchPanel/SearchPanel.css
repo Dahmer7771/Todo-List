@@ -1,0 +1,9 @@
+.search-container {
+    display: flex;
+    margin: 10px 0;
+}
+
+.search-panel {
+    flex-grow: 1;
+    margin-right: 10px;
+}

@@ -1,0 +1,13 @@
+.todo-list-item {
+    padding: .50rem .35rem;
+}
+
+.btn-delete,
+.btn-complete {
+    width: 40px;
+    height: 40px;
+}
+
+.btn-complete {
+    margin-left: 10px;
+}
