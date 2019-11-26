@@ -8,7 +8,7 @@ function TodoCounter() {
                 {1}
                 {" "}
                 more to do,
-                {3}
+                {4}
                 {" "}
                 done
             </span>
