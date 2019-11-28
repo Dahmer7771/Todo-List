@@ -1,3 +1,8 @@
 .item-add-panel {
     margin-top: 10px;
+    display: flex;
+}
+
+.btn-item-add {
+    width: 100px;
 }
