@@ -90,7 +90,8 @@ class App extends Component {
             return items;
         }
 
-        return items.filter((item) => item.label.indexOf(term) > -1);
+        return items.filter((item) => item.label.toLowerCase()
+            .indexOf(term.toLowerCase()) > -1);
     };
 
     onSearchChange = (term) => {
