@@ -7,6 +7,11 @@ class SearchPanel extends Component {
         this.state = {
             term: "",
         };
+        this.buttons = [
+            { name: "all", label: "All" },
+            { name: "active", label: "Active" },
+            { name: "done", label: "Done" },
+        ];
     }
 
     onSearchChange = (e) => {
@@ -20,6 +25,21 @@ class SearchPanel extends Component {
 
     render() {
         const { term } = this.state;
+        const { filter, onFilterChange } = this.props;
+        const buttons = this.buttons.map(({ name, label }) => {
+            const isActive = filter === name;
+            const btnClass = isActive ? "btn-primary" : "btn-light";
+            return (
+                <button
+                    key={name}
+                    type="button"
+                    className={`btn ${btnClass}`}
+                    onClick={() => onFilterChange(name)}
+                >
+                    {label}
+                </button>
+            );
+        });
 
         return (
             <div className="search-container">
@@ -31,15 +51,7 @@ class SearchPanel extends Component {
                     onChange={this.onSearchChange}
                 />
                 <div className="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" className="btn btn-primary">
-                        All
-                    </button>
-                    <button type="button" className="btn btn-light">
-                        Active
-                    </button>
-                    <button type="button" className="btn btn-light">
-                        Done
-                    </button>
+                    {buttons}
                 </div>
             </div>
         );
